@@ -10,8 +10,8 @@
         }, 1);
     };
     spinner(0);
-    
-    
+
+
     // Initiate the wowjs
     new WOW().init();
 
@@ -42,8 +42,8 @@
         dots: false,
         loop: true,
         margin: 0,
-        nav : true,
-        navText : [
+        nav: true,
+        navText: [
             '<i class="bi bi-arrow-left"></i>',
             '<i class="bi bi-arrow-right"></i>'
         ]
@@ -59,27 +59,27 @@
         dots: true,
         loop: true,
         margin: 25,
-        nav : false,
-        navText : [
+        nav: false,
+        navText: [
             '<i class="bi bi-arrow-left"></i>',
             '<i class="bi bi-arrow-right"></i>'
         ],
         responsiveClass: true,
         responsive: {
-            0:{
-                items:1
+            0: {
+                items: 1
             },
-            576:{
-                items:1
+            576: {
+                items: 1
             },
-            768:{
-                items:2
+            768: {
+                items: 2
             },
-            992:{
-                items:2
+            992: {
+                items: 2
             },
-            1200:{
-                items:2
+            1200: {
+                items: 2
             }
         }
     });
@@ -92,27 +92,27 @@
         dots: true,
         loop: true,
         margin: 25,
-        nav : false,
-        navText : [
+        nav: false,
+        navText: [
             '<i class="bi bi-arrow-left"></i>',
             '<i class="bi bi-arrow-right"></i>'
         ],
         responsiveClass: true,
         responsive: {
-            0:{
-                items:1
+            0: {
+                items: 1
             },
-            576:{
-                items:1
+            576: {
+                items: 1
             },
-            768:{
-                items:2
+            768: {
+                items: 2
             },
-            992:{
-                items:2
+            992: {
+                items: 2
             },
-            1200:{
-                items:2
+            1200: {
+                items: 2
             }
         }
     });
@@ -125,30 +125,67 @@
     });
 
 
-    
-   // Back to top button
-   $(window).scroll(function () {
-    if ($(this).scrollTop() > 300) {
-        $('.back-to-top').fadeIn('slow');
-    } else {
-        $('.back-to-top').fadeOut('slow');
-    }
+
+    // Back to top button
+    $(window).scroll(function () {
+        if ($(this).scrollTop() > 300) {
+            $('.back-to-top').fadeIn('slow');
+        } else {
+            $('.back-to-top').fadeOut('slow');
+        }
     });
     $('.back-to-top').click(function () {
-        $('html, body').animate({scrollTop: 0},400, 'easeInOutExpo');
+        $('html, body').animate({ scrollTop: 0 }, 400, 'easeInOutExpo');
         return false;
     });
 
     //--clients
-var copy = document.querySelector(".logos-slide").cloneNode(true);
-document.querySelector(".logo-slider").appendChild(copy);
-//--clients revs 
-var copy = document.querySelector(".logos-slide-rev").cloneNode(true);
-document.querySelector(".logo-slider-rev").appendChild(copy);
+    if (document.querySelector(".logos-slide")) {
+        var copy = document.querySelector(".logos-slide").cloneNode(true);
+        document.querySelector(".logo-slider").appendChild(copy);
+        //--clients revs 
+        var copy = document.querySelector(".logos-slide-rev").cloneNode(true);
+        document.querySelector(".logo-slider-rev").appendChild(copy);
+    }
 
+    //-----side bar
+      // Smooth scrolling for sidebar links
+    $('.sidebar .nav-link').on('click', function(e) {
+        e.preventDefault();
+        const target = $(this.getAttribute('href'));
+        
+        if (target.length) {
+            $('html, body').stop().animate({
+                scrollTop: target.offset().top - 20 // Adjust offset for fixed navbar height
+            }, 600);
+        }
+
+        // Manually add active-link class
+        $('.sidebar .nav-link').removeClass('active-link');
+        $(this).addClass('active-link');
+    });
+
+    // Automatically change active link on scroll
+    $(window).on('scroll', function() {
+        var scrollPosition = $(document).scrollTop();
+
+        // Loop through each section and check its position relative to scroll
+        $('section').each(function() {
+            var sectionOffset = $(this).offset().top - 110; // Adjust for navbar height
+            var sectionHeight = $(this).outerHeight();
+            var sectionId = $(this).attr('id');
+            
+            if (scrollPosition >= sectionOffset && scrollPosition < sectionOffset + sectionHeight) {
+                // Remove active-link class from all links
+                $('.sidebar .nav-link').removeClass('active-link');
+                // Add active-link class to the currently visible section's link
+                $('.sidebar .nav-link[href="#' + sectionId + '"]').addClass('active-link');
+            }
+        });
+    });
 })(jQuery);
 
 
 
 
-  
+
