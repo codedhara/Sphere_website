@@ -1011,20 +1011,27 @@
 
 /*** copyright end ***/
 
+
+/* clients main */
 .logo-slider {
-    /* overflow: hidden; */
-    /* padding: 30px 0 0 0; */
+    overflow: hidden;
     white-space: nowrap;
     position: relative;
 }
 
 .logo-slider:hover .logos-slide {
     animation-play-state: paused;
-    transform: scale(0.98)
 }
-.logos-slide:hover .logo-img {
-    transform: scale(0.98)
+
+.logo-img {
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 }
+
+.logo-img:hover {
+    transform: scale(1.2);
+    cursor: pointer;
+}
+
 .logos-slide {
     display: inline-block;
     animation: 32s slide infinite linear;
@@ -1034,10 +1041,51 @@
     width: 183px;
     height: 83px;
     margin: 0 20px;
+    aspect-ratio: 3/2;
+    object-fit: contain;
+    mix-blend-mode: color-burn !important;
 }
 
 
 @keyframes slide {
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(-100%);
+    }
+}
+
+/* clients reverse */
+.logo-slider-rev {
+    overflow: hidden;
+    white-space: nowrap;
+    position: relative;
+}
+
+.logo-slider-rev:hover .logos-slide-rev {
+    animation-play-state: paused;
+}
+
+
+.logos-slide-rev {
+    display: inline-block;
+    animation: 48s slide-rev infinite linear reverse;
+    white-space: nowrap;
+}
+
+.logos-slide-rev img {
+    width: 183px;
+    height: 83px;
+    margin: 0 20px;
+    aspect-ratio: 3/2;
+    object-fit: contain;
+    mix-blend-mode: color-burn !important;
+}
+
+
+@keyframes slide-rev {
     from {
         transform: translateX(0);
     }

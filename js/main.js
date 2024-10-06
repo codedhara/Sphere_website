@@ -135,17 +135,20 @@
     }
     });
     $('.back-to-top').click(function () {
-        $('html, body').animate({scrollTop: 0}, 1500, 'easeInOutExpo');
+        $('html, body').animate({scrollTop: 0},400, 'easeInOutExpo');
         return false;
     });
 
-    
+    //--clients
+var copy = document.querySelector(".logos-slide").cloneNode(true);
+document.querySelector(".logo-slider").appendChild(copy);
+//--clients revs 
+var copy = document.querySelector(".logos-slide-rev").cloneNode(true);
+document.querySelector(".logo-slider-rev").appendChild(copy);
 
 })(jQuery);
 
-//--clients
-var copy = document.querySelector(".logos-slide").cloneNode(true);
-document.querySelector(".logo-slider").appendChild(copy);
+
 
 
   
