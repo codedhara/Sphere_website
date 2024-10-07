@@ -1096,65 +1096,91 @@
 }
 
 /* side bar  */
-/* .sidebar {
-    position: sticky; 
-    top: 120px;
-    width: 250px; 
-    background-color: var(--bs-secondary);
-    z-index: 1000; 
-    overflow-y: auto; 
-    border-radius: 20px 20px 20px 20px !important;
-}
-
-.sidebar .nav-link {
-    padding: 10px;
-    color: #000;
-    text-decoration: none;
-}
-
-.sidebar .nav-link:hover, .sidebar .active-link {
-    background-color: #007bff;
-    color: white;
-}
-
-.sidebar .active-link {
-    background-color: #007bff;
-    color: white;
-} */
-
-/* Floating Sidebar */
-.sidebar {
+/* Container for Semi-Circle Layout */
+.semi-circle-sidebar {
     position: fixed;
-    top: 50%;
+    top: 60%;
     left: 0;
     transform: translateY(-50%);
+    width: 100px;
     z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
 }
 
+/* Centered logo */
+.semi-circle-sidebar .logo {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.semi-circle-sidebar .logo img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 50%;
+}
+
+/* Sidebar styling for curved layout */
 .sidebar ul {
     list-style-type: none;
     padding: 0;
     margin: 0;
+    position: relative;
 }
 
 .sidebar li {
-    margin: 10px 0;
+    position: absolute;
+    transform-origin: -750% 30px;  /* Adjust pivot for a smoother arc */
 }
 
+/* Adjusted rotation and translation for a smoother semi-circle with 6 items */
+.sidebar li:nth-child(1) {
+    transform: rotate(-28deg) translateX(36px);
+}
+
+.sidebar li:nth-child(2) {
+    transform: rotate(-18deg) translateX(66px);
+}
+
+.sidebar li:nth-child(3) {
+    transform: rotate(-8deg) translateX(56px);
+}
+
+.sidebar li:nth-child(4) {
+    transform: rotate(2deg) translateX(27px);
+}
+
+.sidebar li:nth-child(5) {
+    transform: rotate(12deg) translateX(47px);
+}
+
+.sidebar li:nth-child(6) {
+    transform: rotate(22deg) translateX(37px);
+}
+
+/* Link styling for icons */
 .sidebar .nav-link {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 50px;
-    height: 50px;
+    width: 40px;
+    height: 40px;
     background-color: #333;
     color: white;
     border-radius: 50%;
-    font-size: 20px;
-    transition: all 0.3s ease;
+    font-size: 18px;
     position: relative;
+    transition: all 0.3s ease;
 }
 
+/* Label that shows when hovered or when active */
 .sidebar .nav-link span {
     display: none;
     background-color: #007bff;
@@ -1164,23 +1190,29 @@
     border-radius: 20px;
     white-space: nowrap;
     position: absolute;
-    left: 60px;
+    left: 50px;
+    font-size: 14px;
+
+    /* Force labels to remain straight */
+    transform: none;
 }
 
-.sidebar .nav-link:hover {
-    background-color: #007bff;
-}
-
+/* Show label on hover */
 .sidebar .nav-link:hover span {
     display: inline-block;
 }
 
-.sidebar .nav-link i {
-    font-size: 24px;
+/* Always show label for the active section */
+.sidebar .nav-item.active .nav-link span {
+    display: inline-block;
 }
 
-/* Optional: Add borders to match the original design */
-.sidebar .nav-item {
-    border: 2px solid #007bff;
-    border-radius: 50%;
+/* Hover effect for icon background */
+.sidebar .nav-link.section-link:hover {
+    background-color: #007bff;
+}
+
+/* Styling for active icon */
+.sidebar .nav-item.active .nav-link {
+    background-color: #007bff;
 }
