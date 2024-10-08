@@ -149,38 +149,38 @@
     }
 
     //-----side bar
-      // Smooth scrolling for sidebar links
-    $('.sidebar .nav-link').on('click', function(e) {
-        e.preventDefault();
-        const target = $(this.getAttribute('href'));
-        
-        if (target.length) {
-            $('html, body').stop().animate({
-                scrollTop: target.offset().top - 20 // Adjust offset for fixed navbar height
-            }, 600);
+    document.addEventListener('DOMContentLoaded', function() {
+        var sidebar = document.getElementById('sidebar');
+        var header = document.getElementById('header-section');
+        var footer = document.getElementById('footer-section');
+    
+        // Observer options to detect intersection
+        var observerOptions = {
+            root: null, // Use the viewport as the root
+            threshold: 0.6 // Trigger when at least 1% of the header or footer overlaps
+        };
+    
+        // Observer callback to hide the sidebar on overlap
+        function hideSidebarOnOverlap(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // Hide the sidebar when the header or footer is intersecting
+                    sidebar.style.opacity = '0';
+                    sidebar.style.pointerEvents = 'none';
+                } else {
+                    // Show the sidebar when there is no overlap
+                    sidebar.style.opacity = '1';
+                    sidebar.style.pointerEvents = 'all';
+                }
+            });
         }
-
-        // Manually add active-link class
-        $('.sidebar .nav-link').removeClass('active-link');
-        $(this).addClass('active-link');
-    });
-
-    // Automatically change active link on scroll
-    $(window).on('scroll', function() {
-        var scrollPosition = $(document).scrollTop();
-
-        // Loop through each section and check its position relative to scroll
-        $('section').each(function() {
-            var sectionOffset = $(this).offset().top - 110; // Adjust for navbar height
-            var sectionHeight = $(this).outerHeight();
-            var sectionId = $(this).attr('id');
-            
-            if (scrollPosition >= sectionOffset && scrollPosition < sectionOffset + sectionHeight) {
-                // Remove active-link class from all links
-                $('.sidebar .nav-link').removeClass('active-link');
-                // Add active-link class to the currently visible section's link
-                $('.sidebar .nav-link[href="#' + sectionId + '"]').addClass('active-link');
-            }
-        });
+    
+        // Create observers for both the header and footer
+        var headerObserver = new IntersectionObserver(hideSidebarOnOverlap, observerOptions);
+        var footerObserver = new IntersectionObserver(hideSidebarOnOverlap, observerOptions);
+    
+        // Observe the header and footer for overlap with the sidebar
+        headerObserver.observe(header);
+        footerObserver.observe(footer);
     });
 })(jQuery);

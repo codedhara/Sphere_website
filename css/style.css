@@ -1099,7 +1099,7 @@
 /* Container for Semi-Circle Layout */
 .semi-circle-sidebar {
     position: fixed;
-    top: 60%;
+    top: 50%;
     left: 0;
     transform: translateY(-50%);
     width: 100px;
@@ -1108,16 +1108,24 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    transition: opacity 0.3s ease;
+}
+
+.semi-circle-sidebar[style*="opacity: 0"] {
+    pointer-events: none;
+    transition: opacity 0.3s ease;
 }
 
 /* Centered logo */
 .semi-circle-sidebar .logo {
-    width: 80px; /* Adjusted width to make it more prominent */
+    width: 80px;
+    /* Adjusted width to make it more prominent */
     display: flex;
     justify-content: center;
     align-items: center;
     position: relative;
-    top: 34px; /* Move it up to better center it */
+    top: 34px;
+    /* Move it up to better center it */
 }
 
 .semi-circle-sidebar .logo img {
@@ -1135,7 +1143,8 @@
 
 .sidebar li {
     position: absolute;
-    transform-origin: -800% 30px;  /* Adjust pivot for a smoother arc */
+    transform-origin: -800% 30px;
+    /* Adjust pivot for a smoother arc */
 }
 
 /* Adjusted rotation and translation for a smoother semi-circle with 6 items */
@@ -1201,16 +1210,16 @@
 }
 
 /* Always show label for the active section */
-.sidebar .nav-item.active .nav-link span {
+/* .sidebar .nav-item.active .nav-link span {
     display: inline-block;
-}
+} */
 
 /* Hover effect for icon background */
 .sidebar .nav-link.section-link:hover {
     background-color: var(--bs-primary);
     color: white;
     transform: scale(1.2);
-    box-shadow: 0 4px 8px rgba(238, 231, 231, 0.562);
+    box-shadow: 0 4px 8px rgba(160, 158, 158, 0.879);
 }
 
 /* Styling for active icon */
