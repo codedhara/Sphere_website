@@ -1112,19 +1112,17 @@
 
 /* Centered logo */
 .semi-circle-sidebar .logo {
-    width: 70px;
-    height: 70px;
-    border-radius: 50%;
-    background-color: white;
+    width: 80px; /* Adjusted width to make it more prominent */
     display: flex;
     justify-content: center;
     align-items: center;
+    position: relative;
+    top: 34px; /* Move it up to better center it */
 }
 
 .semi-circle-sidebar .logo img {
     max-width: 100%;
     height: auto;
-    border-radius: 50%;
 }
 
 /* Sidebar styling for curved layout */
@@ -1137,45 +1135,47 @@
 
 .sidebar li {
     position: absolute;
-    transform-origin: -750% 30px;  /* Adjust pivot for a smoother arc */
+    transform-origin: -800% 30px;  /* Adjust pivot for a smoother arc */
 }
 
 /* Adjusted rotation and translation for a smoother semi-circle with 6 items */
 .sidebar li:nth-child(1) {
-    transform: rotate(-28deg) translateX(36px);
+    transform: rotate(-28deg) translateX(20px);
 }
 
 .sidebar li:nth-child(2) {
-    transform: rotate(-18deg) translateX(66px);
+    transform: rotate(-18deg) translateX(56px);
 }
 
 .sidebar li:nth-child(3) {
-    transform: rotate(-8deg) translateX(56px);
+    transform: rotate(-8deg) translateX(66px);
 }
 
 .sidebar li:nth-child(4) {
-    transform: rotate(2deg) translateX(27px);
+    transform: rotate(2deg) translateX(60px);
 }
 
 .sidebar li:nth-child(5) {
-    transform: rotate(12deg) translateX(47px);
+    transform: rotate(12deg) translateX(34px);
 }
 
 .sidebar li:nth-child(6) {
-    transform: rotate(22deg) translateX(37px);
+    transform: rotate(22deg) translateX(-6px);
 }
+
+
 
 /* Link styling for icons */
 .sidebar .nav-link {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 40px;
-    height: 40px;
-    background-color: #333;
-    color: white;
+    width: 60px;
+    height: 60px;
+    background-color: var(--bs-secondary);
+    color: var(--bs-primary);
     border-radius: 50%;
-    font-size: 18px;
+    font-size: 22px;
     position: relative;
     transition: all 0.3s ease;
 }
@@ -1183,18 +1183,16 @@
 /* Label that shows when hovered or when active */
 .sidebar .nav-link span {
     display: none;
-    background-color: #007bff;
+    background-color: var(--bs-primary);
     color: white;
     padding: 5px 10px;
     margin-left: 10px;
     border-radius: 20px;
     white-space: nowrap;
     position: absolute;
-    left: 50px;
-    font-size: 14px;
-
-    /* Force labels to remain straight */
-    transform: none;
+    left: 56px;
+    font-size: 18px;
+    transform: none !important;
 }
 
 /* Show label on hover */
@@ -1209,10 +1207,14 @@
 
 /* Hover effect for icon background */
 .sidebar .nav-link.section-link:hover {
-    background-color: #007bff;
+    background-color: var(--bs-primary);
+    color: white;
+    transform: scale(1.2);
+    box-shadow: 0 4px 8px rgba(238, 231, 231, 0.562);
 }
 
 /* Styling for active icon */
 .sidebar .nav-item.active .nav-link {
-    background-color: #007bff;
+    background-color: var(--bs-primary);
+    color: white;
 }
