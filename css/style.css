@@ -972,7 +972,7 @@
 
 .footer .footer-item a {
     line-height: 35px;
-    color: var(--bs-body);
+    color: var(--bs-dark);
     transition: 0.5s;
 }
 
@@ -1001,12 +1001,22 @@
     color: var(--bs-dark);
 }
 
+.footer .logo {
+    width: 160px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    background-color: var(--bs-white);
+    border-radius: 50%;
+}
+
 /*** Footer End ***/
 
 /*** copyright Start ***/
 .copyright {
-    border-top: 1px solid rgba(255, 255, 255, 0.08);
-    background: var(--bs-dark) !important;
+    border-top: 1px solid var(--bs-primary);
+    background: var(--bs-secondary) !important;
 }
 
 /*** copyright end ***/
@@ -1252,7 +1262,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background-image: url(../img/bg-1.jpg);
+    background-image: url(../img/bg-4.jpg);
     background-size: cover;
     background-position: center;
     opacity: 1; 
