@@ -156,8 +156,8 @@
     
         // Observer options to detect intersection
         var observerOptions = {
-            root: null, // Use the viewport as the root
-            threshold: 0.6 // Trigger when at least 1% of the header or footer overlaps
+            root: null, 
+            threshold: 1
         };
     
         // Observer callback to hide the sidebar on overlap
