@@ -1239,3 +1239,27 @@
     transform: translate(12px, 8px); /* Move down by 10px and right by 10px */
     cursor: pointer;
 }
+
+/* background image */
+.bg-image {
+    background-image: url('path/to/your/image.jpg'); 
+    background-size: cover; 
+    background-position: center;
+    background-repeat: no-repeat; 
+    background-attachment: fixed; 
+    height: 100vh; 
+    width: 100%; 
+    position: relative; 
+    z-index: 1; 
+}
+
+/* Optional overlay to make text more readable */
+.bg-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(238, 238, 238, 0.377); 
+    z-index: 2; 
+}
