@@ -149,38 +149,34 @@
     }
 
     //-----side bar
-    document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', function () {
         var sidebar = document.getElementById('sidebar');
-        var header = document.getElementById('header-section');
-        var footer = document.getElementById('footer-section');
-    
-        // Observer options to detect intersection
-        var observerOptions = {
-            root: null, 
-            threshold: 1
-        };
-    
-        // Observer callback to hide the sidebar on overlap
-        function hideSidebarOnOverlap(entries) {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    // Hide the sidebar when the header or footer is intersecting
-                    sidebar.style.opacity = '0';
-                    sidebar.style.pointerEvents = 'none';
-                } else {
-                    // Show the sidebar when there is no overlap
-                    sidebar.style.opacity = '1';
-                    sidebar.style.pointerEvents = 'all';
-                }
-            });
+        if (sidebar) {
+            var header = document.getElementById('header-section');
+            var footer = document.getElementById('footer-section');
+
+            var observerOptions = {
+                root: null,
+                threshold: 1
+            };
+
+            function hideSidebarOnOverlap(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        sidebar.style.opacity = '0';
+                        sidebar.style.pointerEvents = 'none';
+                    } else {
+                        sidebar.style.opacity = '1';
+                        sidebar.style.pointerEvents = 'all';
+                    }
+                });
+            }
+
+            var headerObserver = new IntersectionObserver(hideSidebarOnOverlap, observerOptions);
+            var footerObserver = new IntersectionObserver(hideSidebarOnOverlap, observerOptions);
+
+            headerObserver.observe(header);
+            footerObserver.observe(footer);
         }
-    
-        // Create observers for both the header and footer
-        var headerObserver = new IntersectionObserver(hideSidebarOnOverlap, observerOptions);
-        var footerObserver = new IntersectionObserver(hideSidebarOnOverlap, observerOptions);
-    
-        // Observe the header and footer for overlap with the sidebar
-        headerObserver.observe(header);
-        footerObserver.observe(footer);
     });
 })(jQuery);
