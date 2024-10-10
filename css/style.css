@@ -1227,3 +1227,15 @@
     background-color: var(--bs-primary);
     color: white;
 }
+
+/* Hover */
+.elem_hover {
+    transition: transform 0.4s ease-out; /* Smooth transition on hover */
+    transform: translate(0, 0); /* Initial state */
+}
+
+/* On hover: move slightly down and right */
+.elem_hover:hover {
+    transform: translate(12px, 8px); /* Move down by 10px and right by 10px */
+    cursor: pointer;
+}
