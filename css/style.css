@@ -1269,3 +1269,10 @@
     z-index: -1; 
 }
 
+/* hide on midel screen size */
+@media (max-width: 767px) {
+    .hide-on-mobile {
+        display: none; /* Completely hide the div */
+    }
+}
+
